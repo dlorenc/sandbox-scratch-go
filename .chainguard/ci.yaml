@@ -1,0 +1,19 @@
+# Scratch fixture for `chainctl develop` and the migrator spike.
+name: ci
+jobs:
+  develop:
+    environment:
+      packages: [go, git, busybox]
+    network: NETWORK_MODE_EXTERNAL
+    egress: [proxy.golang.org, sum.golang.org]
+    steps:
+      - name: version
+        run: go version
+  test:
+    environment:
+      packages: [go]
+    network: NETWORK_MODE_EXTERNAL
+    egress: [proxy.golang.org, sum.golang.org]
+    steps:
+      - name: unit
+        run: go test ./...
