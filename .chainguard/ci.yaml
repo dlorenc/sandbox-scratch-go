@@ -8,7 +8,7 @@ jobs:
     egress: [proxy.golang.org, sum.golang.org]
     steps:
       - name: version
-        run: go version
+        cmd: [go, version]
   test:
     environment:
       packages: [go]
@@ -16,4 +16,4 @@ jobs:
     egress: [proxy.golang.org, sum.golang.org]
     steps:
       - name: unit
-        run: go test ./...
+        cmd: [go, test, ./...]
